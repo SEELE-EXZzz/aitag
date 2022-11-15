@@ -1,32 +1,52 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+  <div>
+    <AiTop></AiTop>
+    <AiNavMenu></AiNavMenu>
+    <router-view></router-view>
+    <ShowCreateAiCard v-show="this.ShowCreateAiCard"></ShowCreateAiCard>
+    <diary v-show="this.ShowDiary"></diary>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import AiTop from './components/AiTop.vue';
+import AiNavMenu from './components/AiNavMenu.vue';
+import CreateAiTag from './pages/CreateAiTag.vue';
+import ShowCreateAiCard from './pages/ShowCreateAiCard.vue';
+import FullAiTag from './pages/FullAiTag.vue';
+import diary from './pages/diary.vue'
 
-nav {
-  padding: 30px;
+export default{
+  components:{
+    AiTop,
+    AiNavMenu,
+    CreateAiTag,
+    ShowCreateAiCard,
+    FullAiTag,
+    diary
+  },
+  data() {
+    return {
+      ShowCreateAiCard:false,
+      ShowDiary:false
+    }
+  },
+  created(){
+    this.$bus.$on('ShowCreateAiCard',()=>{
+      this.ShowCreateAiCard = true
+    })
+    this.$bus.$on('CancelAiCard',()=>{
+      this.ShowCreateAiCard = false
+    })
+    this.$bus.$on('ShowDiary',()=>{
+      this.ShowDiary = true
+    }),
+    this.$bus.$on('CancelDiary',()=>{
+      this.ShowDiary = false
+    })
+  }
 }
+</script>
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style scoped>
 </style>

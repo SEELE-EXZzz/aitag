@@ -1,29 +1,43 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import CreateAiTag from '../pages/CreateAiTag'
+import AiTagCard from '../pages/AiTagCard'
+import FullAiTag from '../pages/FullAiTag'
+import playground from '../pages/playground'
+import others from '../pages/others'
 
 Vue.use(VueRouter)
-
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes:[
+  {
+    name:'CreateAiTag',
+    path:'/',
+    component:CreateAiTag
+  },
+  {
+    name:'AiTagCard',
+    path:'/AiTagCard', 
+    component:AiTagCard
+  },
+  {
+    name:'FullAiTag',
+    path:'/FullAiTag',
+    component:FullAiTag
+  },
+  {
+    name:'playground',
+    path:'/playground',
+    component:playground
+  },
+  {
+    name:'others',
+    path:'/others',
+    component:others
+  }
+]
 })
 
 export default router
