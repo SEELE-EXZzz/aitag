@@ -20,11 +20,11 @@ app.listen(10000,()=>{
 app.get('/AiTagCard/image',(req,res)=>{
   let key = req.query.key
   console.log('传输成功')
-  const accessKey = 'A_WTyjjN3Hx-JkYbi-eKEhj2UQxFRb-Txfxgv36R';
-  const secretKey = 'ymg3fZ8YfUNTUo-u3zAijwZNBiOVIJA7hMv7epQl';
+  const accessKey = '';
+  const secretKey = '';
   const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
   const options = {
-    scope: 'tagimage',
+    scope: '',
   };
   const putPolicy = new qiniu.rs.PutPolicy(options);
   const uploadToken=putPolicy.uploadToken(mac);

@@ -20,9 +20,6 @@
     <el-button type="danger" class="button" id="ButtonCancel" @click.native="CancelTag('textarea')">清空
       <i style="margin-left:2px" class="el-icon-delete"></i>
     </el-button>
-    <el-button type="primary" class="button" id="ButtonSave" @click.native="CreateAiCard">生成卡片
-      <i style="margin-left:2px" class="el-icon-folder-add"></i>
-    </el-button>
     <el-input id="input2"
       size="large"
       type="textarea"
@@ -66,16 +63,6 @@ export default {
           this.$bus.$emit('ChangUnTagColor',)
          }
          
-      },
-      CreateAiCard(){
-        const textarea = this.textarea
-        const UnTextarea = this.UnTextarea
-        const data = {
-          textarea,
-          UnTextarea
-        }
-        this.$bus.$emit('ShowCreateAiCard')
-        this.$bus.$emit('DeliverAiCard',data)
       },
       StorageTag(){
         let text = this.textarea
@@ -157,8 +144,5 @@ export default {
     top: 120px;
     margin-left: -1px;
   }
-  #ButtonSave{
-    top: 180px;
-    margin-left: -1px;
-  }
+
 </style>

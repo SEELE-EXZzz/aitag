@@ -92,6 +92,9 @@ export default {
         this.tag2 = this.FullTag.filter((tag,index)=> index >= 30 && index < 60)
         this.tag3 = this.FullTag.filter((tag,index)=> index >= 60 && index < 90)
       })
+      // this.$axios.post('https://api.cerfai.com/open/get_full_categories').then((res)=>{
+      //   console.log(res)
+      // })
     }
 }
 </script>
